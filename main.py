@@ -18,7 +18,9 @@ if __name__ == '__main__':
     )
 
     if args.mode == "draft":
-        if "alpaca_eval" in args.dataset_path:
+        if "naive" in args.dataset_path:
+            from load_data.naive import load_data
+        elif "alpaca_eval" in args.dataset_path:
             from load_data.alpaca_eval import load_data
         elif "arena_hard" in args.dataset_path:
             from load_data.arena_hard import load_data
