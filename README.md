@@ -31,7 +31,7 @@ Large Language Models (LLMs) require alignment with human preferences to avoid g
 We prepare a script `scripts/exec.sh` for easy start. Before using it, you need to specify some parameters. Below is a sample:
 ```
 id=exp_blabla
-test_data_path=hh
+test_data_path=YOUR_DATASET_PATH
 draft_model_path=DRAFT_MODEL_PATH
 draft_max_tokens=512
 target_model_path=BASE_MODEL_PATH
