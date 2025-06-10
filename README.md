@@ -30,11 +30,11 @@ Large Language Models (LLMs) require alignment with human preferences to avoid g
 ## Easy Start
 We prepare a script `scripts/exec.sh` for easy start. Before using it, you need to specify some parameters. Below is a sample:
 ```
-id=exp_blabla
-test_data_path=YOUR_DATASET_PATH
-draft_model_path=DRAFT_MODEL_PATH
+id={EXP_NAME}
+test_data_path={YOUR_DATASET_PATH}
+draft_model_path={DRAFT_MODEL_PATH}
 draft_max_tokens=512
-target_model_path=BASE_MODEL_PATH
+target_model_path={BASE_MODEL_PATH}
 target_max_tokens=2048
 
 sh scripts/exec.sh \
@@ -50,6 +50,29 @@ Then, just run the script:
 bash scripts/exec.sh
 ```
 To reproduce the results in the paper, you can use our trained model for draft, [Pilot-3B](https://huggingface.co/songff/Pilot-3B), as well as different base models.
+
+## How to Use Your Own Data
+To use your own data, you need to first prepare a `.jsonl` file in the following format:
+```
+{
+    "context": [
+        {
+            "role": "user",
+            "content": "What is the capital of France?"
+        },
+    ],
+    ...
+}
+```
+Please have the word `naive` in your file path `{YOUR_DATASET_PATH}` so that the code can successfully load the data. Then, just specify `test_data_path` in `scripts/exec.sh` as `{YOUR_DATASET_PATH}`, and run it.
+
+You can extract the final results from `logs/{EXP_NAME}/inference_res/target.json` by accessing the `target_result` field. For example, to get the completed response of LLMs for the first sample:
+```
+from utils.utils import load_raw_dataset
+
+results = load_raw_dataset("logs/{EXP_NAME}/inference_res/target.json")
+first_response = results[0]["target_result"]["outputs"][0]["text"]
+```
 
 ## Training Draft Model
 To help acquire draft models like Pilot-3B from scratch, we release a new dataset, [GenerAlign](https://huggingface.co/datasets/songff/GenerAlign), targetted for general preference alignment. Details can be found in [our paper](https://arxiv.org/abs/2506.07434).
