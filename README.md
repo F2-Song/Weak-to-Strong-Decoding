@@ -75,7 +75,7 @@ first_response = results[0]["target_result"]["outputs"][0]["text"]
 ```
 
 ## Training Draft Model
-To help acquire draft models like Pilot-3B from scratch, we release a new dataset, [GenerAlign](https://huggingface.co/datasets/songff/GenerAlign), targetted for general preference alignment. Details can be found in [our paper](https://arxiv.org/abs/2506.07434).
+To help acquire draft models like Pilot-3B from scratch, we release a new dataset, [GenerAlign](https://huggingface.co/datasets/songff/GenerAlign), targeted for general preference alignment. Details can be found in [our paper](https://arxiv.org/abs/2506.07434).
 
 We implement model training with [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory), which is a powerful and easy-to-use framework.
 
