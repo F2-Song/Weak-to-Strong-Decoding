@@ -6,7 +6,7 @@ test_data_path=$2
 draft_model_path=$3
 draft_max_tokens=$4
 target_model_path=$5
-target_max_tokens=$5
+target_max_tokens=$6
 
 mkdir -p logs/$id/inference_res
 
